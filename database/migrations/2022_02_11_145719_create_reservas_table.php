@@ -17,7 +17,6 @@ return new class extends Migration
             $table->id();
             $table->date('dia');
             $table->time('hora');
-            $table->string('estado');
             $table->string('correo_usu');
             $table->string('pista');
             $table->timestamps();

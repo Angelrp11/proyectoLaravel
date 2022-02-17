@@ -12,7 +12,7 @@ class reservasController extends Controller
     public function byDia($dia, $pista)
     {
         $fechaReserva = date('Y-m-d', strtotime($dia));
-        return Reserva::where('dia', $fechaReserva)->where('pista', $pista)->where('estado', 'ocupada')->orderBy('hora')->select('hora')->distinct()->get();
+        return Reserva::where('dia', $fechaReserva)->where('pista', $pista)->orderBy('hora')->select('hora')->distinct()->get();
     }
 
     public function edit()
