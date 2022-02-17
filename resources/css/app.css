@@ -64,6 +64,8 @@
     width: 30vw;
     padding: 20px 20px;
     min-width: 200px;
+    border-radius: 20px;
+    box-shadow: 5px 5px 15px 2px #3c7a49;
 }
 
 @media all and (max-width: 768px) {
