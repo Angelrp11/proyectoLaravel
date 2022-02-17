@@ -35,7 +35,6 @@ class reservasController extends Controller
         $reserva->pista =$_REQUEST['pista'];
 
         $reserva->save();
-
         return view('dashboard');
     }
 
