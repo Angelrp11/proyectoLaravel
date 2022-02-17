@@ -12,7 +12,7 @@
     <div id="reservas" class="cartaReservas">
             <label class="form-label" for="pista">Pista:</label><br>
             <select class="form-select" name="pista" id="pista">
-                <option selected value="">--Seleccionar--</option>
+                <option selected value="empty">--Seleccionar--</option>
                 <option  value="Pista 1">Pista 1</option>
                 <option  value="Pista 2">Pista 2</option>
                 <option  value="Pista 3">Pista 3</option>
@@ -27,7 +27,7 @@
                 $mañana = date('d-m-Y', strtotime($hoy . '+ 1 days'));
                 $pasado = date('d-m-Y', strtotime($mañana . '+ 1 days'));
                 ?>
-                <option selected value="">--Seleccionar--</option>
+                <option selected value="empty">--Seleccionar--</option>
                 <option value="{{ $hoy }}">{{ $hoy }}</option>
                 <option value="{{ $mañana }}">{{ $mañana }}</option>
                 <option value="{{ $pasado }}">{{ $pasado }}</option>
@@ -38,7 +38,7 @@
 
             <label class="form-label" for="hora">Hora:</label><br>
             <select class="form-select" name="hora" id="hora">
-                <option selected value="">--Seleccionar--</option>
+                <option selected value="empty">--Seleccionar--</option>
             </select><br><br>
 
 
@@ -56,8 +56,10 @@
     
 
     <script src="../resources/js/dashboard.js"></script>
+    
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="../resources/js/peticion1.js"></script>
+   
 </x-app-layout>
 {{-- <div class="container text-center my-5">
     <h1>RESERVAS</h1>
