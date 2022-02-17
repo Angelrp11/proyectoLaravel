@@ -31,7 +31,6 @@ class reservasController extends Controller
         $reserva = new Reserva;
         $reserva->dia = $fecha;
         $reserva->hora = $_REQUEST['hora'];
-        $reserva->estado = 'ocupada';
         $reserva->correo_usu = $_REQUEST['email'];
         $reserva->pista =$_REQUEST['pista'];
 
