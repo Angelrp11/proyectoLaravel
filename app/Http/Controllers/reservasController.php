@@ -4,9 +4,25 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Reserva;
+use Illuminate\Support\Facades\Auth;
 
 class reservasController extends Controller
 {
+
+    public function byDia($dia, $pista)
+    {
+        $fechaReserva = date('Y-m-d', strtotime($dia));
+        return Reserva::where('dia', $fechaReserva)->where('pista', $pista)->where('estado', 'ocupada')->orderBy('hora')->select('hora')->distinct()->get();
+    }
+
+    public function edit()
+    {
+        $reservas = Reserva::all();
+
+        return view('dashboard')->with(compact('reservas'));
+    }
+
+
     public function create()
     {
         $fechaPedida = strtotime($_REQUEST['dia']);
@@ -17,10 +33,11 @@ class reservasController extends Controller
         $reserva->hora = $_REQUEST['hora'];
         $reserva->estado = 'ocupada';
         $reserva->correo_usu = $_REQUEST['email'];
-        $reserva->pista = 'Pista '.$_REQUEST['pista'];
+        $reserva->pista =$_REQUEST['pista'];
 
         $reserva->save();
 
         return view('dashboard');
     }
+
 }
