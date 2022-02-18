@@ -21,7 +21,7 @@ Route::get('/', function () {
     return view('welcome');
 })->name('principal');
 
-Route::get('/dashboard', [reservasController::class, 'edit'])->middleware(['auth'])->name('dashboard');
+Route::get('/dashboard', [reservasController::class, 'edit'])->middleware(['auth', 'verify'])->name('dashboard');
 
 Route::get('reservaConfirmada', [reservasController::class, 'create']);
 
