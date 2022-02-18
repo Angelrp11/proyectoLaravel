@@ -32,10 +32,6 @@ Route::get('reservaConfirmada', [reservasController::class, 'create']);
 
 
 
-Route::get('Miperfil', function () {
-    // Así uso la BD
-    $data = App\Models\User::all();
-    return view('miperfil', compact('data'));
-})->name('Miperfil');
+Route::get('Miperfil', [reservasController::class, 'show'])->name('Miperfil');
 
 require __DIR__ . '/auth.php';

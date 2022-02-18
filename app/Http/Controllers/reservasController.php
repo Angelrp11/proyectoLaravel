@@ -38,4 +38,10 @@ class reservasController extends Controller
         return view('dashboard');
     }
 
+    public function show()
+    {
+        $reservas = Reserva::where('correo_usu', Auth::user()->email)->orderBy('dia', 'DESC')->orderBy('hora')->Paginate(5);
+
+        return view('miperfil')->with(compact('reservas'));
+    }
 }

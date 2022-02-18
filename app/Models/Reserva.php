@@ -13,11 +13,4 @@ class Reserva extends Model
     {
         return $this->belongsTo(user::class);
     }
-
-    public function ObtenerReservas()
-    {
-        $reserva = User::first();
-        $reserva->products;
-        return json_encode($reserva);
-    }
 }

@@ -10,53 +10,73 @@
     </div>
 
     <div class="mt-8">
-        <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet"
-            id="bootstrap-css">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-4">
-                    <div>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+            integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+            <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.7/css/all.css">        <div class="container">
+            <div class="row my-5">
+                <div class="col-md-4 col-sm-12">
+                    <div style="max-width: 50%" class="mx-auto">
                         <img src="../resources/img/perfil.png" alt="">
                     </div>
                 </div>
-                <div class="col-md-6">
-                    <div class="">
+                <div class="col-md-6 col-sm-12">
+                    <div>
                         {{-- Problema--> Me muestra todos los datos en vez de uno --}}
-                        {{-- @foreach ($data as $item)
-                            <h2>{{ $item->name }}</h2>
-                        @endforeach --}}
-                        <ul class="nav nav-tabs" id="myTab" role="tablist">
-                            <li class="nav-item">
-                                <a class="nav-link active" id="home-tab" aria-controls="home" aria-selected="true">
-                                    <h5>Datos</h5>
-                                </a>
-                            </li>
-                        </ul>
-                        <br>
-                        @php
-                            // ID DEL PERFIL
-                            $user = DB::table('users')->find(1);
-                            // echo $user->ObtenerReservas()->id;
-                            // Averiguar como se llama al método
-                        @endphp
-                        {{-- @foreach ($data as $item)
-                            <div>
-                                <label for="Nombre">
-                                    <h4>Usuario:</h4>
-                                </label>
-                                <h5 id="Nombre">{{ $item->name }}</h5>
+                        <nav>
+                            <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                                <button class="nav-link active" id="nav-reservas-tab" data-bs-toggle="tab"
+                                    data-bs-target="#nav-reservas" type="button" role="tab" aria-controls="nav-reservas"
+                                    aria-selected="false">Reseras</button>
+                                <button class="nav-link " id="nav-datos-tab" data-bs-toggle="tab"
+                                    data-bs-target="#nav-datos" type="button" role="tab" aria-controls="nav-datos"
+                                    aria-selected="true">Datos</button>
+                                
                             </div>
-                            <div>
-                                <label for="Correo">
-                                    <h4>Correo:</h4>
-                                </label>
-                                <h5 id="Nombre">{{ $item->email }}</h5>
+                        </nav>
+                    <div id="perfil">
+                        <div class="tab-content my-4" id="nav-tabContent">
+                            <div class="tab-pane fade show active" id="nav-reservas" role="tabpanel"
+                                aria-labelledby="nav-reservas-tab">
+                                <h4>Reservas:</h4>
+                                @foreach ($reservas as $reserva)
+                                    <p><strong>Dia: </strong>{{ $reserva->dia }}, <strong>Hora:
+                                        </strong>{{ $reserva->hora }}, <strong>Pista: </strong>{{ $reserva->pista }}
+                                    </p>
+                                @endforeach 
+                                @if (isset($_REQUEST['page']))
+                                    @if ($_REQUEST['page']<=1)
+                                        <a><i class="fas fa-arrow-left fs-5"></i></a>
+                                        <a href="./Miperfil?page={{$_REQUEST['page']+1}}#perfil"><i class="fas fa-arrow-right fs-5"></i></a>
+                                    @else
+                                        @if ($_REQUEST['page']>=count($reservas)/5+1)
+                                            <a href="./Miperfil?page={{$_REQUEST['page']-1}}#perfil"><i class="fas fa-arrow-left fs-5"></i></a>
+                                            <a><i class="fas fa-arrow-right fs-5"></i></a>
+                                        @endif
+                                    @endif
+                                @else
+                                <a><i class="fas fa-arrow-left fs-5"></i></a>
+                                <a href="./Miperfil?page=2#perfil"><i class="fas fa-arrow-right fs-5"></i></a>
+                                @endif
+                                <br>
+                                <a href="./Miperfil?page=1#perfil">Volver a la primera página</a>
+                                
+                                
                             </div>
-                        @endforeach --}}
+                            <div class="tab-pane fade " id="nav-datos" role="tabpanel"
+                                aria-labelledby="nav-datos-tab">
+                                <h4>Nombre:</h4>
+                                <p class="fs-5">{{ Auth::user()->name }}</p>
+                                <h4>Correo:</h4>
+                                <p class="fs-5">{{ Auth::user()->email }}</p>
+                            </div>
+                            
+                        </div>
+                    </div>
                     </div>
                 </div>
             </div>
         </div>
+    </div>
 
     </div>
 
@@ -198,6 +218,9 @@
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="../resources/js/peticion1.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
+    </script>
 
 </x-app-layout>
 {{-- <div class="container text-center my-5">
