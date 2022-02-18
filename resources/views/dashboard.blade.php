@@ -11,7 +11,7 @@
 
     <div id="reservas" class="cartaReservas">
         <label class="form-label" for="pista">Pista:</label><br>
-        <select style="width: 50%" class="text-center" name="pista" id="pista">
+        <select class="form-select" name="pista" id="pista">
             <option selected value="empty">--Seleccionar--</option>
             <option value="Pista 1">Pista 1</option>
             <option value="Pista 2">Pista 2</option>
@@ -20,8 +20,11 @@
 
         </select><br><br>
 
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
         <label class="form-label" for="dia">Dia:</label><br>
-        <select style="width: 50%" class="text-center" name="dia" id="dia">
+        <select class="form-select" name="dia" id="dia">
             <?php
             $hoy = date('d-m-Y');
             $mañana = date('d-m-Y', strtotime($hoy . '+ 1 days'));
@@ -37,7 +40,7 @@
 
 
         <label class="form-label" for="hora">Hora:</label><br>
-        <select style="width: 50%" class="text-center" name="hora" id="hora">
+        <select class="form-select" name="hora" id="hora">
             <option selected value="empty">--Seleccionar--</option>
         </select><br><br>
 

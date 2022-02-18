@@ -12,7 +12,9 @@
     <div class="mt-8">
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
             integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-            <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.7/css/all.css">        <div class="container">
+        <link rel="stylesheet" href="../resources/css/app.css">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.7/css/all.css">
+        <div class="container">
             <div class="row my-5">
                 <div class="col-md-4 col-sm-12">
                     <div style="max-width: 50%" class="mx-auto">
@@ -38,27 +40,50 @@
                             <div class="tab-pane fade show active" id="nav-reservas" role="tabpanel"
                                 aria-labelledby="nav-reservas-tab">
                                 <h4>Reservas:</h4>
-                                @foreach ($reservas as $reserva)
-                                    <p><strong>Dia: </strong>{{ $reserva->dia }}, <strong>Hora:
-                                        </strong>{{ $reserva->hora }}, <strong>Pista: </strong>{{ $reserva->pista }}
-                                    </p>
-                                @endforeach 
-                                @if (isset($_REQUEST['page']))
-                                    @if ($_REQUEST['page']<=1)
-                                        <a><i class="fas fa-arrow-left fs-5"></i></a>
-                                        <a href="./Miperfil?page={{$_REQUEST['page']+1}}#perfil"><i class="fas fa-arrow-right fs-5"></i></a>
-                                    @else
-                                        @if ($_REQUEST['page']>=count($reservas)/5+1)
-                                            <a href="./Miperfil?page={{$_REQUEST['page']-1}}#perfil"><i class="fas fa-arrow-left fs-5"></i></a>
-                                            <a><i class="fas fa-arrow-right fs-5"></i></a>
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">Dia</th>
+                                            <th scope="col">Hora</th>
+                                            <th scope="col">Pista</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        
+                                        @foreach ($reservas as $reserva)
+                                            <tr>
+                                                <td>{{ $reserva->dia }}</td>
+                                                <td>{{ $reserva->hora }}</td>
+                                                <td>{{ $reserva->pista }}</td>
+                                            @if (strtotime('+24 hours') < strtotime($reserva->dia." ".$reserva->hora))
+                                                <td><a href="./cancelarReserva/{{$reserva->id}}"><button class="btn btn-sm btn-outline-secondary">Cancelar Reserva</button></a></td>
+                                            @endif
+                                           
+                                            </tr>                                   
+                                        @endforeach 
+                                    </tbody>
+                                </table>
+
+                                @if (count($reservas)>5))
+                                    @if (isset($_REQUEST['page']))
+                                        @if ($_REQUEST['page']<=1)
+                                            <a><i class="fas fa-arrow-left fs-5"></i></a>
+                                            <a href="./Miperfil?page={{$_REQUEST['page']+1}}#perfil"><i class="fas fa-arrow-right fs-5"></i></a>
+                                        @else
+                                            @if ($_REQUEST['page']>=count($reservas)/5+1)
+                                                <a href="./Miperfil?page={{$_REQUEST['page']-1}}#perfil"><i class="fas fa-arrow-left fs-5"></i></a>
+                                                <a><i class="fas fa-arrow-right fs-5"></i></a>
+                                            @endif
                                         @endif
+                                    @else
+                                    <a><i class="fas fa-arrow-left fs-5"></i></a>
+                                    <a href="./Miperfil?page=2#perfil"><i class="fas fa-arrow-right fs-5"></i></a>
                                     @endif
-                                @else
-                                <a><i class="fas fa-arrow-left fs-5"></i></a>
-                                <a href="./Miperfil?page=2#perfil"><i class="fas fa-arrow-right fs-5"></i></a>
+                                    <br>
+                                    <a href="./Miperfil?page=1#perfil">Volver a la primera página</a>
                                 @endif
-                                <br>
-                                <a href="./Miperfil?page=1#perfil">Volver a la primera página</a>
+                                
+                                
                                 
                                 
                             </div>
@@ -141,7 +166,7 @@
         </div>
         <div class="mx-6 py-10 text-center md:text-left">
             <div class="grid grid-1 md:grid-cols-2 lg gap-8 justify-center">
-                <div class="">
+                <div class="text-center">
                     <h6
                         class="
                           uppercase

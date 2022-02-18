@@ -70,6 +70,10 @@
     box-shadow: 5px 5px 15px 2px #3c7a49;
 }
 
+td{
+    padding: 15px;
+}
+
 @media all and (max-width: 768px) {
     .cabecera {
         margin: 0 10px;

@@ -40,8 +40,15 @@ class reservasController extends Controller
 
     public function show()
     {
-        $reservas = Reserva::where('correo_usu', Auth::user()->email)->orderBy('dia', 'DESC')->orderBy('hora')->Paginate(5);
+        $reservas = Reserva::where('correo_usu', Auth::user()->email)->orderBy('dia', 'DESC')->orderBy('hora', 'DESC')->Paginate(5);
 
         return view('miperfil')->with(compact('reservas'));
+    }
+
+    public function destroy($id)
+    {
+        $reserva = Reserva::where('id',$id)->delete();
+
+        return back();
     }
 }

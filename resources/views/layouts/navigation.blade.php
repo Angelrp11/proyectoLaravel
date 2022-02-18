@@ -35,7 +35,7 @@
                         <!-- Authentication -->
                         <form method="POST" action="{{ route('logout') }}">
                             @csrf
-                            <x-dropdown-link :href="route('Miperfil')">
+                            <x-dropdown-link :href="route('reservas.show')">
                                 {{ __('Mi perfil') }}
                             </x-dropdown-link>
                             <x-dropdown-link :href="route('logout')" onclick="event.preventDefault();

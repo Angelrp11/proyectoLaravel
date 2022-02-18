@@ -25,13 +25,11 @@ Route::get('/dashboard', [reservasController::class, 'edit'])->middleware(['auth
 
 Route::get('reservaConfirmada', [reservasController::class, 'create']);
 
-// Route::get('Miperfil', function () {
-//     return view('miperfil');
-// })->name('Miperfil');
+Route::get('Miperfil', [reservasController::class, 'show'])->name('reservas.show');
+
+Route::get('cancelarReserva/{id}', [reservasController::class, 'destroy'])->name('reservas.destroy');
 
 
 
-
-Route::get('Miperfil', [reservasController::class, 'show'])->name('Miperfil');
 
 require __DIR__ . '/auth.php';
