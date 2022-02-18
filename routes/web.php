@@ -2,7 +2,9 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\reservasController;
-
+use App\Models\Reserva;
+use App\Models\User;
+use Illuminate\Support\Facades\DB;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,4 +25,17 @@ Route::get('/dashboard', [reservasController::class, 'edit'])->middleware(['auth
 
 Route::get('reservaConfirmada', [reservasController::class, 'create']);
 
-require __DIR__.'/auth.php';
+// Route::get('Miperfil', function () {
+//     return view('miperfil');
+// })->name('Miperfil');
+
+
+
+
+Route::get('Miperfil', function () {
+    // Así uso la BD
+    $data = App\Models\User::all();
+    return view('miperfil', compact('data'));
+})->name('Miperfil');
+
+require __DIR__ . '/auth.php';
