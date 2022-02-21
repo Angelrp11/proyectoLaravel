@@ -64,7 +64,7 @@
                                     </tbody>
                                 </table>
 
-                                @if (count($reservas)>5))
+                                @if ($numeroReservas>=5)
                                     @if (isset($_REQUEST['page']))
                                         @if ($_REQUEST['page']<=1)
                                             <a><i class="fas fa-arrow-left fs-5"></i></a>
@@ -81,7 +81,7 @@
                                     @endif
                                     <br>
                                     <a href="./Miperfil?page=1#perfil">Volver a la primera página</a>
-                                @endif
+                                @endif 
                                 
                                 
                                 
