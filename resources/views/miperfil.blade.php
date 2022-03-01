@@ -28,7 +28,7 @@
                             <div class="nav nav-tabs" id="nav-tab" role="tablist">
                                 <button class="nav-link active" id="nav-reservas-tab" data-bs-toggle="tab"
                                     data-bs-target="#nav-reservas" type="button" role="tab" aria-controls="nav-reservas"
-                                    aria-selected="false">Reseras</button>
+                                    aria-selected="false">Reservas</button>
                                 <button class="nav-link " id="nav-datos-tab" data-bs-toggle="tab"
                                     data-bs-target="#nav-datos" type="button" role="tab" aria-controls="nav-datos"
                                     aria-selected="true">Datos</button>
