@@ -15,12 +15,10 @@ class reservasController extends Controller
         return Reserva::where('dia', $fechaReserva)->where('pista', $pista)->orderBy('hora')->select('hora')->distinct()->get();
     }
 
-    public function edit()
-    {
-        $reservas = Reserva::all();
 
-        return view('dashboard')->with(compact('reservas'));
-    }
+
+        
+    
 
 
     public function create()
