@@ -10,14 +10,12 @@ function mostrarAlert() {
     let email = document.getElementById('email').value;
 
     if (dia == 'empty' || hora == 'empty'  || pista == 'empty' ) {
-        console.log('entra');
         Swal.fire(
             'Debes completar todos los campos',
             '',
             'error'
           );
     }else{
-        console.log('no');
         Swal.fire({
             title: 'Reservar Pista',
             icon: 'question',
