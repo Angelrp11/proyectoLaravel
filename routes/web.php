@@ -27,7 +27,7 @@ Route::get('/dashboard', function () {
 
 Route::get('reservaConfirmada', [reservasController::class, 'create']);
 
-Route::get('Miperfil', [reservasController::class, 'show'])->name('reservas.show');
+Route::get('Miperfil', [reservasController::class, 'show'])->middleware(['auth'])->name('reservas.show');
 
 Route::get('cancelarReserva/{id}', [reservasController::class, 'destroy'])->name('reservas.destroy');
 

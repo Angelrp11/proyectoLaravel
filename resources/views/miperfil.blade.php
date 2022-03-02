@@ -23,7 +23,6 @@
                 </div>
                 <div class="col-md-6 col-sm-12">
                     <div>
-                        {{-- Problema--> Me muestra todos los datos en vez de uno --}}
                         <nav>
                             <div class="nav nav-tabs" id="nav-tab" role="tablist">
                                 <button class="nav-link active" id="nav-reservas-tab" data-bs-toggle="tab"
