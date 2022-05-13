@@ -4,7 +4,6 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
     <title>Laravel</title>
 
 
@@ -445,7 +444,6 @@
                 <a href="{{ route('dashboard') }}"><button class="botones">Entrar</button></a>
             </div>
         </div>
-
     @else
         <div class="text-center my-5">
             <h2>PARA RESERVAR UNA PISTA TIENES QUE INICIAR SESIÓN O REGISTRARTE</h2>
